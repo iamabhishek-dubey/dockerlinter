@@ -5,6 +5,7 @@ import (
 	"os"
 	"strconv"
 	// "text/template"
+	"io/ioutil"
 	"html"
 )
 
@@ -311,11 +312,6 @@ func isContain(s []string, e string) bool {
 // CreateMessage : create output message
 func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 	// data := [][]string{}
-	f, err := os.Create("reports/temp.txt")
-	if err != nil {
-		fmt.Println("create file: ", err)
-	}
-	f.Close()
     file, err := os.OpenFile("reports/temp.txt", os.O_APPEND|os.O_WRONLY,0600)
     if err != nil {
        panic(err)
@@ -341,7 +337,12 @@ func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 			  fmt.Println(err)
 			}
 			file.WriteString(v)
-		} 
+		}
 	}
+	content, err := ioutil.ReadFile("reports/temp.txt")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(content)
 	return
 }
