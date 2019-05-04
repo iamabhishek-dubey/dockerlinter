@@ -310,7 +310,7 @@ func isContain(s []string, e string) bool {
 
 // CreateMessage : create output message
 func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
-	data := [][]string{}
+	// data := [][]string{}
 	f, err := os.Create("reports/temp.txt")
 	if err != nil {
 		fmt.Println("create file: ", err)
