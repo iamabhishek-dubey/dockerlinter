@@ -333,12 +333,12 @@ func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 		Avz: data,
 	}
 
-	f, err := os.Create("reports/lintertemplate.html")
+	f, err := os.Create("reports/result.html")
 	if err != nil {
 		fmt.Println("create file: ", err)
 	}
 
-	tmpl := template.Must(template.ParseFiles("reports/result.html"))
+	tmpl := template.Must(template.ParseFiles("reports/lintertemplate.html"))
 	tmpl.Execute(f, htdata)
 	f.Close()
 	return
