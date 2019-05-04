@@ -2,7 +2,7 @@ package linter
 
 import (
 	"github.com/moby/buildkit/frontend/dockerfile/parser"
-	"github.com/zabio3/godolint/linter/rules"
+	"github.com/iamabhishek-dubey/dockerlinter/linter/rules"
 )
 
 // Analyzer implements Analyzer.
