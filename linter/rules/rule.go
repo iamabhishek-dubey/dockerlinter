@@ -328,7 +328,7 @@ func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 			html.UnescapeString(tableEnd),
 			html.UnescapeString(htmlEnd),
 		}
-		data = append(data, row)
+		data = append(data, rows)
 	}
 	fmt.Println(data)
 	return
