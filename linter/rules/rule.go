@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"os"
 	"strconv"
-	"text/template"
+//	"strings"
+//	"text/template"
 	"html"
 )
 
@@ -50,7 +51,7 @@ const (
 )
 
 type PageData struct {
-	Avz [][]string
+	Text string
 }
 
 // Severity stand check type
@@ -311,8 +312,18 @@ func isContain(s []string, e string) bool {
 // CreateMessage : create output message
 func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 	data := [][]string{}
+	datas := [][]string{}
+//        mydata := []string{}
+        mydata := []string{}
+    file, err := os.OpenFile("input.txt", os.O_APPEND|os.O_WRONLY,0600)
+    if err != nil {
+       panic(err)
+    }
+    defer file.Close()
+     if len(vrst) > 0 {
 	for _, v := range vrst {
 		rst = append(rst, fmt.Sprintf("#%v %s %s %s\n", v.line, rule.Code, rule.Description, v.addMsg))
+	    if v.line > 0 {
 		rows := []string{
 			html.UnescapeString(htmlStart),
 			html.UnescapeString(tableStart),
@@ -324,22 +335,47 @@ func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 			html.UnescapeString(tableStart),
 			rule.Description,
 			html.UnescapeString(tableEnd),
+			html.UnescapeString(tableStart),
+			v.addMsg,
+			html.UnescapeString(tableEnd),
 			html.UnescapeString(htmlEnd),
 		}
-		data = append(data, rows)
-	}
 
-	htdata := PageData{
-		Avz: data,
-	}
+//	   data = append(data, rows)
 
-	f, err := os.Create("reports/result.html")
-	if err != nil {
-		fmt.Println("create file: ", err)
+            for err, v := range rows {
+	       if err == 10000000000 {
+	         fmt.Println(err)
+	       }
+	       file.WriteString(v)
+	       mydata = append(mydata, v)
+	      // fmt.Println(mydata)
+	     //  fmt.Println(mydata)
+	    }
+	    if len(rows) != 0 {
+	        data = append(data, rows)
+//		fmt.Println(data)
+	    }
+    }
 	}
+     }
+     if len(data) != 0 {
+ //      fmt.Print(datas)
+       //fmt.Println(mydata)
+       datas = append(datas, mydata)
+       fmt.Println(datas)
+//	htdata := PageData{
+//		Text: mydata,
+//	}
+//	f, err := os.Create("reports/result.html")
+//	if err != nil {
+//		fmt.Println("create file: ", err)
+//	}
 
-	tmpl := template.Must(template.ParseFiles("reports/lintertemplate.html"))
-	tmpl.Execute(f, htdata)
-	f.Close()
+//	tmpl := template.Must(template.ParseFiles("reports/lintertemplate.html"))
+//	tmpl.Execute(f, htdata)
+//	f.Close()
+}
 	return
 }
+
