@@ -2,6 +2,9 @@ package rules
 
 import (
 	"fmt"
+	"strconv"
+	// "text/template"
+	"html"
 )
 
 // Rule is filtered rule (with ignore rule applied)
@@ -37,6 +40,17 @@ const (
 	// deprecated instruction
 	MAINTAINER = "maintainer"
 )
+
+const (
+	htmlStart  = "<tr>"
+	htmlEnd    = "</tr>"
+	tableStart = "<td>"
+	tableEnd   = "</td>"
+)
+
+type PageData struct {
+	Avz [][]string
+}
 
 // Severity stand check type
 type Severity struct {
@@ -295,8 +309,27 @@ func isContain(s []string, e string) bool {
 
 // CreateMessage : create output message
 func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
+	data := [][]string{}
 	for _, v := range vrst {
 		rst = append(rst, fmt.Sprintf("#%v %s %s %s\n", v.line, rule.Code, rule.Description, v.addMsg))
+		rows := []string{
+			html.UnescapeString(htmlStart),
+			html.UnescapeString(tableStart),
+			strconv.Itoa(v.line),
+			html.UnescapeString(tableEnd),
+			html.UnescapeString(tableStart),
+			rule.Code,
+			html.UnescapeString(tableEnd),
+			html.UnescapeString(tableStart),
+			rule.Description,
+			html.UnescapeString(tableEnd),
+			html.UnescapeString(tableStart),
+			v.addMsg,
+			html.UnescapeString(tableEnd),
+			html.UnescapeString(htmlEnd),
+		}
+		data = append(data, row)
 	}
+	fmt.Println(data)
 	return
 }
