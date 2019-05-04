@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Ot-Security(EC2)</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/util.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<div class="container">
+		<a href="index.html"><button class="btn btn-success">Back</button></a>
+		<img src="images/ot-auditor.png">
+
+		<h2 class="title">Ot-Auditor(Dockerfile)</h2>
+
+	<table class="greyGridTable">
+		<thead>
+			<tr>
+	            <th>Line Number</th>
+	            <th>Rule Code</th>
+				<th style="width:35%">Description</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			</tr>
+		</tfoot>
+		<tbody>
+            {{range $i := .Avz}}
+            {{range $i}}
+            {{.}}
+            {{end}}
+            {{end}}
+		</tbody>
+	</table>
+</div>
+</body>
+</html>
+
