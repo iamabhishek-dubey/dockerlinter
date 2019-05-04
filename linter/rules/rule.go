@@ -343,6 +343,7 @@ func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(content)
+	str := string(content)
+	fmt.Printf(str)
 	return
 }
