@@ -2,8 +2,9 @@ package rules
 
 import (
 	"fmt"
+	"os"
 	"strconv"
-	// "text/template"
+	"text/template"
 	"html"
 )
 
@@ -323,13 +324,22 @@ func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 			html.UnescapeString(tableStart),
 			rule.Description,
 			html.UnescapeString(tableEnd),
-			html.UnescapeString(tableStart),
-			v.addMsg,
-			html.UnescapeString(tableEnd),
 			html.UnescapeString(htmlEnd),
 		}
 		data = append(data, rows)
 	}
-	fmt.Println(data)
+
+	htdata := PageData{
+		Avz: data,
+	}
+
+	f, err := os.Create("reports/lintertemplate.html")
+	if err != nil {
+		fmt.Println("create file: ", err)
+	}
+
+	tmpl := template.Must(template.ParseFiles("reports/result.html"))
+	tmpl.Execute(f, htdata)
+	f.Close()
 	return
 }
