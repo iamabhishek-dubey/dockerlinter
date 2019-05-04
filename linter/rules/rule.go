@@ -311,6 +311,16 @@ func isContain(s []string, e string) bool {
 // CreateMessage : create output message
 func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 	data := [][]string{}
+	f, err := os.Create("reports/temp.txt")
+	if err != nil {
+		fmt.Println("create file: ", err)
+	}
+	f.Close()
+    file, err := os.OpenFile("reports/temp.txt", os.O_APPEND|os.O_WRONLY,0600)
+    if err != nil {
+       panic(err)
+	}
+	defer file.Close()
 	for _, v := range vrst {
 		rst = append(rst, fmt.Sprintf("#%v %s %s %s\n", v.line, rule.Code, rule.Description, v.addMsg))
 		rows := []string{
@@ -326,20 +336,12 @@ func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 			html.UnescapeString(tableEnd),
 			html.UnescapeString(htmlEnd),
 		}
-		data = append(data, rows)
+		for err, v := range rows {
+			if err == 10000000000 {
+			  fmt.Println(err)
+			}
+			file.WriteString(v)
+		} 
 	}
-
-	htdata := PageData{
-		Avz: data,
-	}
-
-	f, err := os.Create("reports/result.html")
-	if err != nil {
-		fmt.Println("create file: ", err)
-	}
-
-	tmpl := template.Must(template.ParseFiles("reports/lintertemplate.html"))
-	tmpl.Execute(f, htdata)
-	f.Close()
 	return
 }
