@@ -12,3 +12,9 @@ This OS Family which we are supporting right now is:-
 - [X] **RedHat Family(Including CentOS)**
 - [X] **Debian Family(All)**
 
+## Requirments
+The requirements for using this tools are:-
+
+- **Golang**
+- **Docker(If you are running Dockerized Setup)**
+
