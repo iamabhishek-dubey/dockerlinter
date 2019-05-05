@@ -26,6 +26,24 @@ Here is the list of parameters which is accepted by this tool.
 |--ignore | code Ex:- dl3000 | Provide the rule code which you want to ignore |
 |--version | - | It will print the version of dockerlinter. |
 
+## How to Use
+This tool is pretty much straight forward for use. We have categorized it in two parts i.e. **Manual Setup** and **Dockerized Setup**
+
+```shell
+git clone https://github.com/iamabhishek-dubey/dockerlinter.git
+cd dockerlinter
+make get-depends
+make build-code
+```
+
+### Dockerized Setup
+Steps for Dockerized Setup
+
+```shell
+make build-image
+docker run -itd --name docker-linter docker-linter:latest
+```
+
 ## Rules
 For rules, we have taken the refrence from **[hadolint](https://github.com/hadolint/hadolint)**. Here is the list of rules which we are implementing:-
 
