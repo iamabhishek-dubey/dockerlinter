@@ -29,8 +29,7 @@ const usage = `dockerlinter - Dockerfile Linter written in Golang
 Usage: dockerlinter [--ignore RULECODE]
   Lint Dockerfile for errors and best practices
 Available options:
-  --ignore RULECODE	A rule to ignore. If present, the ignore list in the
-			config file is ignored
+  --ignore Provide the rule code which you want to ignore.
 Other Commands:
   --help	-h	Help about any command
   --version	-v	Print the version information
