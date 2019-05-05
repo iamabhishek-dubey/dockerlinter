@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"io/ioutil"
+	"text/template"
 	"github.com/moby/buildkit/frontend/dockerfile/parser"
 	"github.com/iamabhishek-dubey/dockerlinter/linter/rules"
 )
@@ -11,6 +12,10 @@ import (
 // Analyzer implements Analyzer.
 type Analyzer struct {
 	rules []*rules.Rule
+}
+
+type PageData struct {
+	Text string
 }
 
 // NewAnalyzer generate a NewAnalyzer with rules to apply
@@ -63,7 +68,19 @@ func (a Analyzer) Run(node *parser.Node) ([]string, error) {
 		fmt.Println(err)
 	}
 	str := string(content)
-	fmt.Printf(str)
+
+	htdata := PageData{
+		Text: str,
+	}
+
+	f, err := os.Create("reports/result.html")
+	if err != nil {
+		fmt.Println("create file: ", err)
+	}
+
+	tmpl := template.Must(template.ParseFiles("reports/lintertemplate.html"))
+	tmpl.Execute(f, htdata)
+	f.Close()
 
 	return rst, nil
 }

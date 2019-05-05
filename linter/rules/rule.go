@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"strconv"
-	// "text/template"
 	"html"
 )
 
@@ -48,10 +47,6 @@ const (
 	tableStart = "<td>"
 	tableEnd   = "</td>"
 )
-
-type PageData struct {
-	Avz [][]string
-}
 
 // Severity stand check type
 type Severity struct {
