@@ -82,6 +82,9 @@ func (a Analyzer) Run(node *parser.Node) ([]string, error) {
 	tmpl.Execute(f, htdata)
 	f.Close()
 
+	fmt.Println("")
+	fmt.Println("The report file is generated in reports/result.html")
+
 	return rst, nil
 }
 
