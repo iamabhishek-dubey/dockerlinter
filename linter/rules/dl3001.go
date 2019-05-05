@@ -1,4 +1,3 @@
-
 package rules
 
 import (

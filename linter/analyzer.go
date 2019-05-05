@@ -2,11 +2,11 @@ package linter
 
 import (
 	"fmt"
-	"os"
-	"io/ioutil"
-	"text/template"
-	"github.com/moby/buildkit/frontend/dockerfile/parser"
 	"github.com/iamabhishek-dubey/dockerlinter/linter/rules"
+	"github.com/moby/buildkit/frontend/dockerfile/parser"
+	"io/ioutil"
+	"os"
+	"text/template"
 )
 
 // Analyzer implements Analyzer.

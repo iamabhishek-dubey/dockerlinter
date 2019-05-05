@@ -7,8 +7,8 @@ import (
 	"os"
 	"sort"
 
-	"github.com/moby/buildkit/frontend/dockerfile/parser"
 	"github.com/iamabhishek-dubey/dockerlinter/linter"
+	"github.com/moby/buildkit/frontend/dockerfile/parser"
 )
 
 // Exit codes are int values that represent an exit code for a particular error.

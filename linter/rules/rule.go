@@ -2,9 +2,9 @@ package rules
 
 import (
 	"fmt"
+	"html"
 	"os"
 	"strconv"
-	"html"
 )
 
 // Rule is filtered rule (with ignore rule applied)
@@ -307,9 +307,9 @@ func isContain(s []string, e string) bool {
 // CreateMessage : create output message
 func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 	// data := [][]string{}
-    file, err := os.OpenFile("reports/temp.txt", os.O_APPEND|os.O_WRONLY,0600)
-    if err != nil {
-       panic(err)
+	file, err := os.OpenFile("reports/temp.txt", os.O_APPEND|os.O_WRONLY, 0600)
+	if err != nil {
+		panic(err)
 	}
 	defer file.Close()
 	for _, v := range vrst {
@@ -329,7 +329,7 @@ func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 		}
 		for err, v := range rows {
 			if err == 10000000000 {
-			  fmt.Println(err)
+				fmt.Println(err)
 			}
 			file.WriteString(v)
 		}
