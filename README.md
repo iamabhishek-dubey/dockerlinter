@@ -60,7 +60,7 @@ Example Report will be something like this:-
 ## Rules
 For rules, we have taken the refrence from **[hadolint](https://github.com/hadolint/hadolint)**. Here is the list of rules which we are implementing:-
 
-| **Rule**                                                         | **Description**                                                                                                                                         |
+| Rule                                                         | Description                                                                                                                                         |
 |:-------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|
 | [DL3000](https://github.com/hadolint/hadolint/wiki/DL3000)   | Use absolute WORKDIR.                                                                                                                               |
 | [DL3001](https://github.com/hadolint/hadolint/wiki/DL3001)   | For some bash commands it makes no sense running them in a Docker container like ssh, vim, shutdown, service, ps, free, top, kill, mount, ifconfig. |
