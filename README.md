@@ -55,7 +55,7 @@ dockerlinter Dockerfile
 
 Example Report will be something like this:-
 
-![](./static/logo.png)
+![](./static/example.png)
 
 ## Rules
 For rules, we have taken the refrence from **[hadolint](https://github.com/hadolint/hadolint)**. Here is the list of rules which we are implementing:-
