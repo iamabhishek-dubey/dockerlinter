@@ -51,6 +51,12 @@ After running setup, you just need to execute a simple binary. For example:-
 dockerlinter Dockerfile
 ```
 
+## Example Reports
+
+Example Report will be something like this:-
+
+![](./static/logo.png)
+
 ## Rules
 For rules, we have taken the refrence from **[hadolint](https://github.com/hadolint/hadolint)**. Here is the list of rules which we are implementing:-
 
