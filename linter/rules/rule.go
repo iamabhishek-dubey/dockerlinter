@@ -339,11 +339,5 @@ func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 			file.WriteString(v)
 		}
 	}
-	content, err := ioutil.ReadFile("reports/temp.txt")
-	if err != nil {
-		fmt.Println(err)
-	}
-	str := string(content)
-	fmt.Printf(str)
 	return
 }

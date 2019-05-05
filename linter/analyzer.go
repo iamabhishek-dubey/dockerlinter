@@ -1,6 +1,9 @@
 package linter
 
 import (
+	"fmt"
+	"os"
+	"io/ioutil"
 	"github.com/moby/buildkit/frontend/dockerfile/parser"
 	"github.com/iamabhishek-dubey/dockerlinter/linter/rules"
 )
@@ -28,6 +31,13 @@ func newAnalyzer(ignoreRules []string) Analyzer {
 // Run apply docker best practice rules to docker ast
 func (a Analyzer) Run(node *parser.Node) ([]string, error) {
 	var rst []string
+
+	f, err := os.Create("reports/result.html")
+	if err != nil {
+		fmt.Println("create file: ", err)
+	}
+	f.Close()
+
 	rstChan := make(chan []string, len(a.rules))
 	errChan := make(chan error, len(a.rules))
 
@@ -47,6 +57,13 @@ func (a Analyzer) Run(node *parser.Node) ([]string, error) {
 			return nil, err
 		}
 	}
+
+	content, err := ioutil.ReadFile("reports/temp.txt")
+	if err != nil {
+		fmt.Println(err)
+	}
+	str := string(content)
+	fmt.Printf(str)
 
 	return rst, nil
 }
