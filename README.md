@@ -44,6 +44,13 @@ make build-image
 docker run -itd --name docker-linter docker-linter:latest
 ```
 
+## Running dockerlinter
+After running setup, you just need to execute a simple binary. For example:-
+
+```shell
+dockerlinter Dockerfile
+```
+
 ## Rules
 For rules, we have taken the refrence from **[hadolint](https://github.com/hadolint/hadolint)**. Here is the list of rules which we are implementing:-
 
