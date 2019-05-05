@@ -1,0 +1,27 @@
+---
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.9
+    working_directory: /go/src/github.com/iamabhishek-dubey/dockerlinter
+    steps:
+      - checkout
+      - run: make get-depends
+      - run: make build-code
+
+  docker-image:
+    docker:
+      - image: circleci/golang:1.9
+    working_directory: /go/src/github.com/iamabhishek-dubey/dockerlinter
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: make build-image
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - build
+      - docker-image
