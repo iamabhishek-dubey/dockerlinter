@@ -18,3 +18,10 @@ The requirements for using this tools are:-
 - **Golang**
 - **Docker(If you are running Dockerized Setup)**
 
+## Parameters
+Here is the list of parameters which is accepted by this tool.
+
+|**Parameter**|**Supported Values**|**Description**|
+|-------------|--------------------|---------------|
+|--ignore | code Ex:- dl3000 | Provide the rule code which you want to ignore |
+|--version | - | It will print the version of dockerlinter. |
