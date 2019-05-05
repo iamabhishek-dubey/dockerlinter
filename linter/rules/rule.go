@@ -5,7 +5,6 @@ import (
 	"os"
 	"strconv"
 	// "text/template"
-	"io/ioutil"
 	"html"
 )
 
