@@ -37,7 +37,7 @@ func newAnalyzer(ignoreRules []string) Analyzer {
 func (a Analyzer) Run(node *parser.Node) ([]string, error) {
 	var rst []string
 
-	f, err := os.Create("reports/result.html")
+	f, err := os.Create("reports/temp.txt")
 	if err != nil {
 		fmt.Println("create file: ", err)
 	}
