@@ -73,7 +73,7 @@ func (a Analyzer) Run(node *parser.Node) ([]string, error) {
 		Text: str,
 	}
 
-	f, err := os.Create("reports/result.html")
+	f, err = os.Create("reports/result.html")
 	if err != nil {
 		fmt.Println("create file: ", err)
 	}
