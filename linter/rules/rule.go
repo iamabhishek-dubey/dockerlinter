@@ -2,6 +2,9 @@ package rules
 
 import (
 	"fmt"
+	"os"
+	"strconv"
+	"html"
 )
 
 // Rule is filtered rule (with ignore rule applied)
@@ -36,6 +39,14 @@ const (
 
 	// deprecated instruction
 	MAINTAINER = "maintainer"
+)
+
+const (
+	htmlStart        = "<tr>"
+	htmlEnd          = "</tr>"
+	tableStart       = "<td>"
+	descriptionStart = "<td align=\"left\">"
+	tableEnd         = "</td>"
 )
 
 // Severity stand check type
@@ -140,7 +151,7 @@ var Rules = map[string]*Rule{
 	"DL3008": {
 		Code:         "DL3008",
 		Severity:     SeverityWarning,
-		Description:  "Pin versions in apt get install. Instead of `apt-get install <package>` use `apt-get install <package>=<version>`.",
+		Description:  "Pin versions in apt get install. Instead of `apt-get install package` use `apt-get install <package>=<version>`.",
 		ValidateFunc: validateDL3008,
 	},
 	"DL3009": {
@@ -170,13 +181,13 @@ var Rules = map[string]*Rule{
 	"DL3013": {
 		Code:         "DL3013",
 		Severity:     SeverityWarning,
-		Description:  "Pin versions in pip. Instead of `pip install <package>` use `pip install <package>==<version>`.",
+		Description:  "Pin versions in pip. Instead of `pip install package` use `pip install package==version`.",
 		ValidateFunc: validateDL3013,
 	},
 	"DL3014": {
 		Code:         "DL3014",
 		Severity:     SeverityWarning,
-		Description:  "Use the `-y` switch to avoid manual input `apt-get -y install <package>`.",
+		Description:  "Use the `-y` switch to avoid manual input `apt-get -y install package`.",
 		ValidateFunc: validateDL3014,
 	},
 	"DL3015": {
@@ -188,7 +199,7 @@ var Rules = map[string]*Rule{
 	"DL3016": {
 		Code:         "DL3016",
 		Severity:     SeverityWarning,
-		Description:  "Pin versions in npm. Instead of `npm install <package>` use `npm install <package>@<version>`.",
+		Description:  "Pin versions in npm. Instead of `npm install package` use `npm install package@version`.",
 		ValidateFunc: validateDL3016,
 	},
 	"DL3017": {
@@ -200,7 +211,7 @@ var Rules = map[string]*Rule{
 	"DL3018": {
 		Code:         "DL3018",
 		Severity:     SeverityWarning,
-		Description:  "Pin versions in apk add. Instead of `apk add <package>` use `apk add <package>=<version>`.",
+		Description:  "Pin versions in apk add. Instead of `apk add package` use `apk add package=version`.",
 		ValidateFunc: validateDL3018,
 	},
 	"DL3019": {
@@ -295,8 +306,33 @@ func isContain(s []string, e string) bool {
 
 // CreateMessage : create output message
 func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
+	// data := [][]string{}
+    file, err := os.OpenFile("reports/temp.txt", os.O_APPEND|os.O_WRONLY,0600)
+    if err != nil {
+       panic(err)
+	}
+	defer file.Close()
 	for _, v := range vrst {
 		rst = append(rst, fmt.Sprintf("#%v %s %s %s\n", v.line, rule.Code, rule.Description, v.addMsg))
+		rows := []string{
+			html.UnescapeString(htmlStart),
+			html.UnescapeString(tableStart),
+			strconv.Itoa(v.line),
+			html.UnescapeString(tableEnd),
+			html.UnescapeString(tableStart),
+			rule.Code,
+			html.UnescapeString(tableEnd),
+			html.UnescapeString(descriptionStart),
+			rule.Description,
+			html.UnescapeString(tableEnd),
+			html.UnescapeString(htmlEnd),
+		}
+		for err, v := range rows {
+			if err == 10000000000 {
+			  fmt.Println(err)
+			}
+			file.WriteString(v)
+		}
 	}
 	return
 }
