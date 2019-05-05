@@ -42,10 +42,11 @@ const (
 )
 
 const (
-	htmlStart  = "<tr>"
-	htmlEnd    = "</tr>"
-	tableStart = "<td>"
-	tableEnd   = "</td>"
+	htmlStart        = "<tr>"
+	htmlEnd          = "</tr>"
+	tableStart       = "<td>"
+	descriptionStart = "<td align=\"left\">"
+	tableEnd         = "</td>"
 )
 
 // Severity stand check type
@@ -150,7 +151,7 @@ var Rules = map[string]*Rule{
 	"DL3008": {
 		Code:         "DL3008",
 		Severity:     SeverityWarning,
-		Description:  "Pin versions in apt get install. Instead of `apt-get install <package>` use `apt-get install <package>=<version>`.",
+		Description:  "Pin versions in apt get install. Instead of `apt-get install package` use `apt-get install <package>=<version>`.",
 		ValidateFunc: validateDL3008,
 	},
 	"DL3009": {
@@ -180,13 +181,13 @@ var Rules = map[string]*Rule{
 	"DL3013": {
 		Code:         "DL3013",
 		Severity:     SeverityWarning,
-		Description:  "Pin versions in pip. Instead of `pip install <package>` use `pip install <package>==<version>`.",
+		Description:  "Pin versions in pip. Instead of `pip install package` use `pip install package==version`.",
 		ValidateFunc: validateDL3013,
 	},
 	"DL3014": {
 		Code:         "DL3014",
 		Severity:     SeverityWarning,
-		Description:  "Use the `-y` switch to avoid manual input `apt-get -y install <package>`.",
+		Description:  "Use the `-y` switch to avoid manual input `apt-get -y install package`.",
 		ValidateFunc: validateDL3014,
 	},
 	"DL3015": {
@@ -198,7 +199,7 @@ var Rules = map[string]*Rule{
 	"DL3016": {
 		Code:         "DL3016",
 		Severity:     SeverityWarning,
-		Description:  "Pin versions in npm. Instead of `npm install <package>` use `npm install <package>@<version>`.",
+		Description:  "Pin versions in npm. Instead of `npm install package` use `npm install package@version`.",
 		ValidateFunc: validateDL3016,
 	},
 	"DL3017": {
@@ -210,7 +211,7 @@ var Rules = map[string]*Rule{
 	"DL3018": {
 		Code:         "DL3018",
 		Severity:     SeverityWarning,
-		Description:  "Pin versions in apk add. Instead of `apk add <package>` use `apk add <package>=<version>`.",
+		Description:  "Pin versions in apk add. Instead of `apk add package` use `apk add package=version`.",
 		ValidateFunc: validateDL3018,
 	},
 	"DL3019": {
@@ -321,7 +322,7 @@ func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 			html.UnescapeString(tableStart),
 			rule.Code,
 			html.UnescapeString(tableEnd),
-			html.UnescapeString(tableStart),
+			html.UnescapeString(descriptionStart),
 			rule.Description,
 			html.UnescapeString(tableEnd),
 			html.UnescapeString(htmlEnd),
