@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/iamabhishek-dubey/dockerlinter.svg?style=svg)](https://circleci.com/gh/iamabhishek-dubey/dockerlinter)
+[![CircleCI](https://circleci.com/gh/iamabhishek-dubey/dockerlinter.svg?style=svg)](https://circleci.com/gh/iamabhishek-dubey/dockerlinter) [![Go Report Card](https://goreportcard.com/badge/github.com/iamabhishek-dubey/dockerlinter)](https://goreportcard.com/report/github.com/iamabhishek-dubey/dockerlinter)
 # Dockerlinter
 
 ![](./static/logo.png)
