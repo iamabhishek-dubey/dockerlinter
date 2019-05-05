@@ -27,7 +27,7 @@ Here is the list of parameters which is accepted by this tool.
 |--version | - | It will print the version of dockerlinter. |
 
 ## Rules
-For rules, we have taken the refrence from hadolint. Here is the list of rules which we are implementing:-
+For rules, we have taken the refrence from **[hadolint](https://github.com/hadolint/hadolint)**. Here is the list of rules which we are implementing:-
 
 | Rule                                                         | Description                                                                                                                                         |
 |:-------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|
