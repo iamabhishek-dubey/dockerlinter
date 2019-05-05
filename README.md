@@ -1,4 +1,4 @@
-# Dockerfile Linter
+# Dockerlinter
 
 ![](./static/logo.png)
 
