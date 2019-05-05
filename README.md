@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/iamabhishek-dubey/dockerlinter.svg?style=svg)](https://circleci.com/gh/iamabhishek-dubey/dockerlinter)
 # Dockerlinter
 
 ![](./static/logo.png)
