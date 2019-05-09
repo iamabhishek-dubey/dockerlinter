@@ -96,7 +96,7 @@ func (cli *CLI) Run(args []string) int {
 	}
 
 	analyzer := linter.NewAnalyzer(ingnoreRules)
-	rst, err := analyzer.Run(r.AST)
+	rst, err := analyzer.Run(r.AST, file)
 	if err != nil {
 		_, _ = fmt.Fprintf(cli.ErrStream, "%s\n", err)
 		return ExitCodeLintCheckError

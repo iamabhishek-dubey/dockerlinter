@@ -307,7 +307,7 @@ func isContain(s []string, e string) bool {
 }
 
 // CreateMessage : create output message
-func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
+func CreateMessage(rule *Rule, vrst []ValidateResult, filePath string) (rst []string) {
 	// data := [][]string{}
 	file, err := os.OpenFile("reports/temp.txt", os.O_APPEND|os.O_WRONLY, 0600)
 	if err != nil {
@@ -315,7 +315,7 @@ func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 	}
 	defer file.Close()
 	for _, v := range vrst {
-		exactline := ScanFile("Dockerfile", v.line)
+		exactline := ScanFile(filePath, v.line)
 		rst = append(rst, fmt.Sprintf("#%v %s %s %s %s\n", v.line, exactline, rule.Code, rule.Description, v.addMsg))
 		rows := []string{
 			html.UnescapeString(htmlStart),
