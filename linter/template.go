@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+package linter
+
+const htmltemplate = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Dockerfile Auditor</title>
@@ -11,7 +13,7 @@
 </head>
 <body>
 	<div class="container">
-		<img src="images/auditor.png">
+		<img src="https://iamabhishek-dubey.github.io/dockerlinter/reports/images/auditor.png">
 
 		<h2 class="title">Dockerfile Auditor</h2>
 
@@ -37,4 +39,4 @@
 	</table>
 </div>
 </body>
-</html>
+</html>`
