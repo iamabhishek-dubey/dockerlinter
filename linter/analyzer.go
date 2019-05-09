@@ -34,7 +34,7 @@ func newAnalyzer(ignoreRules []string) Analyzer {
 }
 
 // Run apply docker best practice rules to docker ast
-func (a Analyzer) Run(node *parser.Node) ([]string, error) {
+func (a Analyzer) Run(node *parser.Node, filePath) ([]string, error) {
 	var rst []string
 
 	f, err := os.Create("reports/temp.txt")
@@ -52,7 +52,7 @@ func (a Analyzer) Run(node *parser.Node) ([]string, error) {
 			if err != nil {
 				errChan <- err
 			} else {
-				rstChan <- rules.CreateMessage(rule, vrst)
+				rstChan <- rules.CreateMessage(rule, vrst, filePath)
 			}
 		}(rule)
 		select {
