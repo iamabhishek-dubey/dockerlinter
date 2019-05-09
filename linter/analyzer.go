@@ -78,7 +78,7 @@ func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 		fmt.Println("create file: ", err)
 	}
 
-	template.Must(template.New("Docker Lineter Template").Parse(htmltemplate))
+	tmpl := template.Must(template.New("Docker Lineter Template").Parse(htmltemplate))
 	tmpl.Execute(f, htdata)
 	f.Close()
 
