@@ -313,11 +313,15 @@ func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 	}
 	defer file.Close()
 	for _, v := range vrst {
-		rst = append(rst, fmt.Sprintf("#%v %s %s %s\n", v.line, rule.Code, rule.Description, v.addMsg))
+		exactline := ScanFile("Dockerfile", v.line)
+		rst = append(rst, fmt.Sprintf("#%v %s %s %s %s\n", v.line, exactline, rule.Code, rule.Description, v.addMsg))
 		rows := []string{
 			html.UnescapeString(htmlStart),
 			html.UnescapeString(tableStart),
 			strconv.Itoa(v.line),
+			html.UnescapeString(tableEnd),
+			html.UnescapeString(tableStart),
+			exactline,
 			html.UnescapeString(tableEnd),
 			html.UnescapeString(tableStart),
 			rule.Code,
@@ -335,4 +339,39 @@ func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 		}
 	}
 	return
+}
+
+func ReadFile(config string) []string {
+	file, err := os.Open(config)
+	if err != nil {
+		log.Fatalf("failed opening file: %s", err)
+	}
+
+	scanner := bufio.NewScanner(file)
+	scanner.Split(bufio.ScanLines)
+
+	var txtlines []string
+	for scanner.Scan() {
+		txtlines = append(txtlines, scanner.Text())
+	}
+	file.Close()
+
+	return txtlines
+}
+
+func ScanFile(file string, line int) string {
+	var j int
+	var value string
+	// var text string
+	var lines []string
+
+	lines = Run(file)
+
+	for k, v := range lines {
+		j = k + 1
+		if j == line {
+		  value = v
+		}
+	}
+	return value
 }
