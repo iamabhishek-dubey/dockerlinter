@@ -39,5 +39,4 @@ const htmltemplate = `<!DOCTYPE html>
 	</table>
 </div>
 </body>
-</html>
-`
+</html>`
