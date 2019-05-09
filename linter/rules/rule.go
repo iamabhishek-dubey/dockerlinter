@@ -322,7 +322,7 @@ func CreateMessage(rule *Rule, vrst []ValidateResult) (rst []string) {
 			html.UnescapeString(tableStart),
 			strconv.Itoa(v.line),
 			html.UnescapeString(tableEnd),
-			html.UnescapeString(tableStart),
+			html.UnescapeString(descriptionStart),
 			exactline,
 			html.UnescapeString(tableEnd),
 			html.UnescapeString(tableStart),
