@@ -37,7 +37,7 @@ func newAnalyzer(ignoreRules []string) Analyzer {
 func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 	var rst []string
 
-	f, err := os.Create("reports/temp.txt")
+	f, err := os.Create("temp.txt")
 	if err != nil {
 		fmt.Println("create file: ", err)
 	}
@@ -63,7 +63,7 @@ func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 		}
 	}
 
-	content, err := ioutil.ReadFile("reports/temp.txt")
+	content, err := ioutil.ReadFile("temp.txt")
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -73,7 +73,7 @@ func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 		Text: str,
 	}
 
-	f, err = os.Create("reports/result.html")
+	f, err = os.Create("result.html")
 	if err != nil {
 		fmt.Println("create file: ", err)
 	}
@@ -83,7 +83,7 @@ func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 	f.Close()
 
 	fmt.Println("")
-	fmt.Println("The report file is generated in reports/result.html")
+	fmt.Println("The report file is generated in result.html")
 
 	return rst, nil
 }

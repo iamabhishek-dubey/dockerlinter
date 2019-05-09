@@ -309,7 +309,7 @@ func isContain(s []string, e string) bool {
 // CreateMessage : create output message
 func CreateMessage(rule *Rule, vrst []ValidateResult, filePath string) (rst []string) {
 	// data := [][]string{}
-	file, err := os.OpenFile("reports/temp.txt", os.O_APPEND|os.O_WRONLY, 0600)
+	file, err := os.OpenFile("temp.txt", os.O_APPEND|os.O_WRONLY, 0600)
 	if err != nil {
 		panic(err)
 	}
