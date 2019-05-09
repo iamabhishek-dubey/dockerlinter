@@ -78,7 +78,9 @@ func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 		fmt.Println("create file: ", err)
 	}
 
-	tmpl := template.Parse(htmltemplate)
+	t := template.New("HTML template")
+
+	tmpl := t.Parse(htmltemplate)
 	tmpl.Execute(f, htdata)
 	f.Close()
 
