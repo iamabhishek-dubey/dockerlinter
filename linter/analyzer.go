@@ -34,7 +34,7 @@ func newAnalyzer(ignoreRules []string) Analyzer {
 }
 
 // Run apply docker best practice rules to docker ast
-func (a Analyzer) Run(node *parser.Node, filePath) ([]string, error) {
+func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 	var rst []string
 
 	f, err := os.Create("reports/temp.txt")
