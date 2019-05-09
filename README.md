@@ -1,6 +1,7 @@
 [![CircleCI](https://circleci.com/gh/iamabhishek-dubey/dockerlinter.svg?style=svg)](https://circleci.com/gh/iamabhishek-dubey/dockerlinter) 
 [![Go Report Card](https://goreportcard.com/badge/github.com/iamabhishek-dubey/dockerlinter)](https://goreportcard.com/report/github.com/iamabhishek-dubey/dockerlinter)
 [![Apache License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![GitHub release](http://img.shields.io/github/release/iamabhishek-dubey/dockerlinter.svg?style=flat-square)](https://github.com/iamabhishek-dubey/dockerlinter/releases/latest)
 # Dockerlinter
 
 ![](./static/logo.png)
