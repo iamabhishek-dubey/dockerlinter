@@ -5,6 +5,8 @@ import (
 	"html"
 	"os"
 	"strconv"
+	"bufio"
+	"log"
 )
 
 // Rule is filtered rule (with ignore rule applied)
@@ -365,7 +367,7 @@ func ScanFile(file string, line int) string {
 	// var text string
 	var lines []string
 
-	lines = Run(file)
+	lines = ReadFile(file)
 
 	for k, v := range lines {
 		j = k + 1
