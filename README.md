@@ -99,3 +99,8 @@ For rules, we have taken the refrence from **[hadolint](https://github.com/hadol
 | [DL4004](https://github.com/hadolint/hadolint/wiki/DL4004)   | Multiple `ENTRYPOINT` instructions found.                                                                                                           |
 | [DL4005](https://github.com/hadolint/hadolint/wiki/DL4005)   | Use `SHELL` to change the default shell.                                                                                                            |
 | [DL4006](https://github.com/hadolint/hadolint/wiki/DL4006)   | Set the `SHELL` option -o pipefail before `RUN` with a pipe in it|
+
+## Todo
+- [ ] Remove temporary files
+- [ ] Publish table output on terminal
+- [ ] Add more linting rules
