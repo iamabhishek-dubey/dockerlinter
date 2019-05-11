@@ -310,7 +310,7 @@ func isContain(s []string, e string) bool {
 func CreateMessage(rule *Rule, vrst []ValidateResult, filePath string) (rst []string) {
 	// data := [][]string{}
 	file, err := os.OpenFile("temp.txt", os.O_APPEND|os.O_WRONLY, 0600)
-	// csv_file, err := os.OpenFile("temp.csv", os.O_APPEND|os.O_WRONLY, 0600)
+	csv_file, err := os.OpenFile("temp.csv", os.O_APPEND|os.O_WRONLY, 0600)
 
 	if err != nil {
 		panic(err)
@@ -319,6 +319,10 @@ func CreateMessage(rule *Rule, vrst []ValidateResult, filePath string) (rst []st
 	for _, v := range vrst {
 		exactline := ScanFile(filePath, v.line)
 		rst = append(rst, fmt.Sprintf("#%v %s %s %s %s\n", v.line, exactline, rule.Code, rule.Description, v.addMsg))
+
+		data := fmt.Sprintf("%v,%s,%s,%s,%s", v.line, exactline, rule.Code, rule.Description, v.addMsg)
+		csv_file.WriteString(data)
+
 		rows := []string{
 			html.UnescapeString(htmlStart),
 			html.UnescapeString(tableStart),

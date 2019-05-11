@@ -53,7 +53,7 @@ func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 	if err != nil {
 		panic(err)
 	}
-	header := "Line Number, Line, Rule Code, Description"
+	header := "Line Number,Line,Rule Code,Description"
     csv_file.WriteString(header)
 
 	rstChan := make(chan []string, len(a.rules))
