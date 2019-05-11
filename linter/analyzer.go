@@ -82,10 +82,7 @@ func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 	tmpl.Execute(f, htdata)
 	f.Close()
 
-	f, err = os.Remove("temp.txt")
-	if err != nil {
-		fmt.Println("create file: ", err)
-	}
+	os.Remove("temp.txt")
 
 	fmt.Println("")
 	fmt.Println("The report file is generated in result.html")
