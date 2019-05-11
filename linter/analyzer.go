@@ -98,6 +98,8 @@ func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 
 	table, _ := tablewriter.NewCSV(os.Stdout, "temp.csv", true)
 	table.SetAlignment(tablewriter.ALIGN_LEFT)
+	table.SetRowLine(true)
+	table.SetAutoWrapText(false)
 	table.Render()
 
 	os.Remove("temp.txt")
