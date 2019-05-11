@@ -109,5 +109,6 @@ func (cli *CLI) Run(args []string) int {
 		output = output + s
 	}
 	_, _ = fmt.Fprint(cli.OutStream, output)
+	fmt.Println("Hey")
 	return ExitCodeOK
 }
