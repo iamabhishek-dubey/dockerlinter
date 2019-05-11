@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/iamabhishek-dubey/dockerlinter/linter/rules"
 	"github.com/moby/buildkit/frontend/dockerfile/parser"
+	"github.com/olekukonko/tablewriter"
 	"io/ioutil"
 	"os"
 	"text/template"
@@ -94,6 +95,10 @@ func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 	tmpl := template.Must(template.New("Docker Lineter Template").Parse(htmltemplate))
 	tmpl.Execute(f, htdata)
 	f.Close()
+
+	table, _ := tablewriter.NewCSV(os.Stdout, "temp.csv", true)
+	table.SetAlignment(tablewriter.ALIGN_LEFT)
+	table.Render()
 
 	os.Remove("temp.txt")
 
