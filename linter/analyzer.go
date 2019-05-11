@@ -103,9 +103,7 @@ func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 	table.Render()
 
 	os.Remove("temp.txt")
-
-	fmt.Println("")
-	fmt.Println("The report file is generated in result.html")
+	os.Remove("temp.csv")
 
 	return rst, nil
 }
