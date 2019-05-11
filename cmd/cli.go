@@ -108,7 +108,7 @@ func (cli *CLI) Run(args []string) int {
 		// ends of each strings have "\n"
 		output = output + s
 	}
-	_, _ = fmt.Fprint(cli.OutStream, output)
-	fmt.Println("Hey")
+	// _, _ = fmt.Fprint(cli.OutStream, output)
+	fmt.Println("The report file is generated with name result.html")
 	return ExitCodeOK
 }
