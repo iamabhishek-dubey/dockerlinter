@@ -57,7 +57,35 @@ dockerlinter Dockerfile
 
 ## Example Reports
 
-Example Report will be something like this:-
+We are generating reports in two ways one is HTML and other one is Table.
+
+- **Table Report**
+
+```shell
++-------------+--------------------------------+-----------+--------------------------------+
+| LINE NUMBER |              LINE              | RULE CODE |          DESCRIPTION           |
++-------------+--------------------------------+-----------+--------------------------------+
+| 1           | FROM alpine:latest             | DL3007    | Using latest is prone to       |
+|             |                                |           | errors if the image will       |
+|             |                                |           | ever update. Pin the version   |
+|             |                                |           | explicitly to a release tag.   |
++-------------+--------------------------------+-----------+--------------------------------+
+| 11          | RUN apk update && \            | DL3018    | Pin versions in apk add.       |
+|             |                                |           | Instead of `apk add package`   |
+|             |                                |           | use `apk add package=version`. |
++-------------+--------------------------------+-----------+--------------------------------+
+| 11          | RUN apk update && \            | DL3019    | Use the `--no-cache` switch    |
+|             |                                |           | to avoid the need to use       |
+|             |                                |           | `--update` and remove          |
+|             |                                |           | `/var/cache/apk/*` when done   |
+|             |                                |           | installing packages.           |
++-------------+--------------------------------+-----------+--------------------------------+
+| 3           | MAINTAINER Abhishek Dubey      | DL4000    | MAINTAINER is deprecated.      |
+|             | <abhishek.dubey@opstree.com>   |           |                                |
++-------------+--------------------------------+-----------+--------------------------------+
+```
+
+- **HTML Report**
 
 ![](./static/example.png)
 
@@ -101,6 +129,6 @@ For rules, we have taken the refrence from **[hadolint](https://github.com/hadol
 | [DL4006](https://github.com/hadolint/hadolint/wiki/DL4006)   | Set the `SHELL` option -o pipefail before `RUN` with a pipe in it|
 
 ## Todo
-- [ ] Remove temporary files
-- [ ] Publish table output on terminal
+- [X] Remove temporary files
+- [X] Publish table output on terminal
 - [ ] Add more linting rules

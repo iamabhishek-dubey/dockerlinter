@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/iamabhishek-dubey/dockerlinter/linter/rules"
 	"github.com/moby/buildkit/frontend/dockerfile/parser"
+	"github.com/olekukonko/tablewriter"
 	"io/ioutil"
 	"os"
 	"text/template"
@@ -42,6 +43,19 @@ func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 		fmt.Println("create file: ", err)
 	}
 	f.Close()
+
+	t, err := os.Create("temp.csv")
+	if err != nil {
+		fmt.Println("create file: ", err)
+	}
+	t.Close()
+
+	csv_file, err := os.OpenFile("temp.csv", os.O_APPEND|os.O_WRONLY, 0600)
+	if err != nil {
+		panic(err)
+	}
+	header := "Line Number,Line,Rule Code,Description\n"
+    csv_file.WriteString(header)
 
 	rstChan := make(chan []string, len(a.rules))
 	errChan := make(chan error, len(a.rules))
@@ -82,12 +96,25 @@ func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 	tmpl.Execute(f, htdata)
 	f.Close()
 
-	fmt.Println("")
-	fmt.Println("The report file is generated in result.html")
+	table, _ := tablewriter.NewCSV(os.Stdout, "temp.csv", true)
+	table.SetAlignment(tablewriter.ALIGN_LEFT)
+	table.SetRowLine(true)
+	table.SetAutoWrapText(false)
+	table.Render()
+
+	os.Remove("temp.txt")
+	os.Remove("temp.csv")
 
 	return rst, nil
 }
 
+func isError(err error) bool {
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	return (err != nil)
+}
 // getMakeDifference is a function to create a difference set
 func getMakeDifference(xs, ys []string) []string {
 	if len(xs) > len(ys) {
