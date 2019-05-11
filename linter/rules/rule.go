@@ -320,7 +320,7 @@ func CreateMessage(rule *Rule, vrst []ValidateResult, filePath string) (rst []st
 		exactline := ScanFile(filePath, v.line)
 		rst = append(rst, fmt.Sprintf("#%v %s %s %s %s\n", v.line, exactline, rule.Code, rule.Description, v.addMsg))
 
-		data := fmt.Sprintf("%v,%s,%s,%s,%s\n", v.line, exactline, rule.Code, rule.Description, v.addMsg)
+		data := fmt.Sprintf("%v,%s,%s,%s\n", v.line, exactline, rule.Code, rule.Description)
 		csv_file.WriteString(data)
 
 		rows := []string{
