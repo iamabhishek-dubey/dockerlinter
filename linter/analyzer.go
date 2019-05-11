@@ -38,9 +38,7 @@ func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 	var rst []string
 
 	f, err := os.Create("temp.txt")
-	if err != nil {
-		fmt.Println("create file: ", err)
-	}
+	if isError(err) { return }
 	f.Close()
 
 	rstChan := make(chan []string, len(a.rules))
@@ -64,9 +62,8 @@ func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 	}
 
 	content, err := ioutil.ReadFile("temp.txt")
-	if err != nil {
-		fmt.Println(err)
-	}
+	if isError(err) { return }
+
 	str := string(content)
 
 	htdata := PageData{
@@ -74,18 +71,27 @@ func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 	}
 
 	f, err = os.Create("result.html")
-	if err != nil {
-		fmt.Println("create file: ", err)
-	}
+	if isError(err) { return }
 
 	tmpl := template.Must(template.New("Docker Lineter Template").Parse(htmltemplate))
 	tmpl.Execute(f, htdata)
 	f.Close()
 
+	var err = os.Remove(path)
+	if isError(err) { return }
+
 	fmt.Println("")
 	fmt.Println("The report file is generated in result.html")
 
 	return rst, nil
+}
+
+func isError(err error) bool {
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	return (err != nil)
 }
 
 // getMakeDifference is a function to create a difference set
