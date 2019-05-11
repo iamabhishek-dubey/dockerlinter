@@ -23,7 +23,7 @@ const (
 
 const name = "dockerlinter"
 
-const version = "0.0.1"
+const version = "0.0.2"
 
 const usage = `dockerlinter - Dockerfile Linter written in Golang
 Usage: dockerlinter [--ignore RULECODE]
