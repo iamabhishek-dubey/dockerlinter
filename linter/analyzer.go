@@ -47,7 +47,7 @@ func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 	if err != nil {
 		fmt.Println("create file: ", err)
 	}
-	f.Close()
+	t.Close()
 
 	csv_file, err := os.OpenFile("temp.csv", os.O_APPEND|os.O_WRONLY, 0600)
 	if err != nil {
