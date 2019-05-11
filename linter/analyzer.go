@@ -43,6 +43,19 @@ func (a Analyzer) Run(node *parser.Node, filePath string) ([]string, error) {
 	}
 	f.Close()
 
+	t, err := os.Create("temp.csv")
+	if err != nil {
+		fmt.Println("create file: ", err)
+	}
+	f.Close()
+
+	csv_file, err := os.OpenFile("temp.csv", os.O_APPEND|os.O_WRONLY, 0600)
+	if err != nil {
+		panic(err)
+	}
+	header := "Line Number, Line, Rule Code, Description"
+    csv_file.WriteString(header)
+
 	rstChan := make(chan []string, len(a.rules))
 	errChan := make(chan error, len(a.rules))
 

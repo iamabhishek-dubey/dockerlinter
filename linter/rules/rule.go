@@ -310,6 +310,8 @@ func isContain(s []string, e string) bool {
 func CreateMessage(rule *Rule, vrst []ValidateResult, filePath string) (rst []string) {
 	// data := [][]string{}
 	file, err := os.OpenFile("temp.txt", os.O_APPEND|os.O_WRONLY, 0600)
+	// csv_file, err := os.OpenFile("temp.csv", os.O_APPEND|os.O_WRONLY, 0600)
+
 	if err != nil {
 		panic(err)
 	}
