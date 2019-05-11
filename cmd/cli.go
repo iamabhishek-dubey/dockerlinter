@@ -109,6 +109,6 @@ func (cli *CLI) Run(args []string) int {
 		output = output + s
 	}
 	// _, _ = fmt.Fprint(cli.OutStream, output)
-	fmt.Println("The report file is generated with name result.html")
+	fmt.Println("\nThe report file is generated with name result.html")
 	return ExitCodeOK
 }
