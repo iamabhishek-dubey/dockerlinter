@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/iamabhishek-dubey/dockerlinter.svg?style=svg)](https://circleci.com/gh/iamabhishek-dubey/dockerlinter) 
+[![CircleCI](https://circleci.com/gh/iamabhishek-dubey/dockerlinter.svg?style=shield)](https://circleci.com/gh/iamabhishek-dubey/dockerlinter) 
 [![Go Report Card](https://goreportcard.com/badge/github.com/iamabhishek-dubey/dockerlinter)](https://goreportcard.com/report/github.com/iamabhishek-dubey/dockerlinter)
 [![Apache License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![GitHub release](http://img.shields.io/github/release/iamabhishek-dubey/dockerlinter.svg?style=flat-square)](https://github.com/iamabhishek-dubey/dockerlinter/releases/latest)
@@ -11,16 +11,21 @@
 A simple golang tool which audits your Dockerfile with Best Practices and generates a HTML report. The main goal of creating this tool is to provide easy, fast and reliable linting of Dockerfile.
 
 ## Supported OS Distribution
+
 This OS Family which we are supporting right now is:-
 
-- [X] **RedHat Family(Including CentOS)**
-- [X] **Debian Family(All)**
+- **RedHat Family(Including CentOS)**
+- **Debian Family(All)**
+- **Windows**
 
 ## Requirments
 The requirements for using this tools are:-
 
-- **Golang**
-- **Docker(If you are running Dockerized Setup)**
+##### Golang 
+- If you want to do development
+
+##### Docker
+- If you are running Dockerized Setup
 
 ## Parameters
 Here is the list of parameters which is accepted by this tool.
@@ -31,6 +36,7 @@ Here is the list of parameters which is accepted by this tool.
 |--version | - | It will print the version of dockerlinter. |
 
 ## How to Use
+
 This tool is pretty much straight forward for use. We have categorized it in two parts i.e. **Manual Setup** and **Dockerized Setup**
 
 ```shell
