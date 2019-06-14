@@ -2,6 +2,8 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/iamabhishek-dubey/dockerlinter)](https://goreportcard.com/report/github.com/iamabhishek-dubey/dockerlinter)
 [![Apache License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![GitHub release](http://img.shields.io/github/release/iamabhishek-dubey/dockerlinter.svg?style=flat-square)](https://github.com/iamabhishek-dubey/dockerlinter/releases/latest)
+[![Docker Repository on Quay.io](https://quay.io/repository/abhishek_dubey/dockerlinter/status "Docker Repository on Quay.io")](https://quay.io/repository/abhishek_dubey/dockerlinter)
+
 # Dockerlinter - A simple golang tool for linting of Dockerfile
 
 ![](./static/logo.png)
