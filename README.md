@@ -2,7 +2,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/iamabhishek-dubey/dockerlinter)](https://goreportcard.com/report/github.com/iamabhishek-dubey/dockerlinter)
 [![Apache License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![GitHub release](http://img.shields.io/github/release/iamabhishek-dubey/dockerlinter.svg?style=flat-square)](https://github.com/iamabhishek-dubey/dockerlinter/releases/latest)
-# Dockerlinter - A simple golang tool for checking linting of Dockerfile
+# Dockerlinter - A simple golang tool for linting of Dockerfile
 
 ![](./static/logo.png)
 
@@ -71,7 +71,7 @@ make build-code
 wget https://github.com/iamabhishek-dubey/dockerlinter/releases/download/v0.0.2/dockerlinter-0.0.2-linux-amd64.tar.gz
 tar -xvzf dockerlinter-0.0.2-linux-amd64.tar.gz
 
-For Windows
+## For Windows
 wget https://github.com/iamabhishek-dubey/dockerlinter/releases/download/v0.0.2/dockerlinter-0.0.2-windows-amd64.tar.gz
 tar -xvzf dockerlinter-0.0.2-windows-amd64.tar.gz
 ```
