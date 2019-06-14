@@ -53,9 +53,9 @@ Here is the list of parameters which is accepted by this tool.
 |--ignore | code Ex:- dl3000 | Provide the rule code which you want to ignore |
 |--version | - | It will print the version of dockerlinter. |
 
-## How to Use
+## Getting Started
 
-This tool is pretty much straight forward for use. We have categorized it in two parts i.e. **Manual Setup** and **Dockerized Setup**
+#### Compiling binary
 
 ```shell
 git clone https://github.com/iamabhishek-dubey/dockerlinter.git
@@ -64,7 +64,19 @@ make get-depends
 make build-code
 ```
 
-### Dockerized Setup
+#### Using existing release
+
+```shell
+## For linux
+wget https://github.com/iamabhishek-dubey/dockerlinter/releases/download/v0.0.2/dockerlinter-0.0.2-linux-amd64.tar.gz
+tar -xvzf dockerlinter-0.0.2-linux-amd64.tar.gz
+
+For Windows
+wget https://github.com/iamabhishek-dubey/dockerlinter/releases/download/v0.0.2/dockerlinter-0.0.2-windows-amd64.tar.gz
+tar -xvzf dockerlinter-0.0.2-windows-amd64.tar.gz
+```
+
+#### Dockerized Setup
 Steps for Dockerized Setup
 
 ```shell
