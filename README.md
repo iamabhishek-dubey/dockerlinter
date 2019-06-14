@@ -2,7 +2,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/iamabhishek-dubey/dockerlinter)](https://goreportcard.com/report/github.com/iamabhishek-dubey/dockerlinter)
 [![Apache License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![GitHub release](http://img.shields.io/github/release/iamabhishek-dubey/dockerlinter.svg?style=flat-square)](https://github.com/iamabhishek-dubey/dockerlinter/releases/latest)
-# Dockerlinter
+# Dockerlinter - A simple golang tool for checking linting of Dockerfile
 
 ![](./static/logo.png)
 
@@ -20,6 +20,30 @@ The requirements for using this tools are:-
 
 ##### Docker
 - If you are running Dockerized Setup
+
+## Overview
+
+Dockerlinter will check the Dockerfile for best practices and generate report according to it.
+
+Things you should know about Dockerlinter:-
+- Dockerlinter only checks the best practices of Dockerfile, It doesn't format it.
+- For development golang 1.9+ versions are supported.
+
+The folder structure is something like this:-
+
+```s
+dockerlinter     ---> Main codebase for Dockerlinter
+├── cmd          ---> Contains main.go which is the entrypoint of the dockerlinter
+├── Dockerfile   ---> Dockerfile for dockerization of linting utility
+├── example      ---> Some example Dockerfiles for testing
+├── LICENSE      ---> Apache-2.0 License for this linter
+├── linter       ---> Contains rules for dockerlinter
+├── main.go      ---> The main.go file which will call other modules
+├── Makefile     ---> Makefile for ease of the development
+├── README.md    ---> README have all the information about this linter
+├── reports      ---> Report generation code for linter
+└── static       ---> Static files like images etc.
+```
 
 ## Parameters
 Here is the list of parameters which is accepted by this tool.
