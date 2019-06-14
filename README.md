@@ -10,13 +10,9 @@
 
 A simple golang tool which audits your Dockerfile with Best Practices and generates a HTML report. The main goal of creating this tool is to provide easy, fast and reliable linting of Dockerfile.
 
-## Supported OS Distribution
-
-This OS Family which we are supporting right now is:-
-
-- **RedHat Family(Including CentOS)**
-- **Debian Family(All)**
-- **Windows**
+Right now we are supporting below OS:-
+- Windows
+- Linux
 
 ## Requirments
 The requirements for using this tools are:-
