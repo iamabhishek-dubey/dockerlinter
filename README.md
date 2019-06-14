@@ -1,26 +1,51 @@
-[![CircleCI](https://circleci.com/gh/iamabhishek-dubey/dockerlinter.svg?style=svg)](https://circleci.com/gh/iamabhishek-dubey/dockerlinter) 
+[![CircleCI](https://circleci.com/gh/iamabhishek-dubey/dockerlinter.svg?style=shield)](https://circleci.com/gh/iamabhishek-dubey/dockerlinter) 
 [![Go Report Card](https://goreportcard.com/badge/github.com/iamabhishek-dubey/dockerlinter)](https://goreportcard.com/report/github.com/iamabhishek-dubey/dockerlinter)
 [![Apache License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![GitHub release](http://img.shields.io/github/release/iamabhishek-dubey/dockerlinter.svg?style=flat-square)](https://github.com/iamabhishek-dubey/dockerlinter/releases/latest)
-# Dockerlinter
+[![Docker Repository on Quay.io](https://quay.io/repository/abhishek_dubey/dockerlinter/status "Docker Repository on Quay.io")](https://quay.io/repository/abhishek_dubey/dockerlinter)
+
+# Dockerlinter - A simple golang tool for linting of Dockerfile
 
 ![](./static/logo.png)
 
-## Introduction
-
 A simple golang tool which audits your Dockerfile with Best Practices and generates a HTML report. The main goal of creating this tool is to provide easy, fast and reliable linting of Dockerfile.
 
-## Supported OS Distribution
-This OS Family which we are supporting right now is:-
-
-- [X] **RedHat Family(Including CentOS)**
-- [X] **Debian Family(All)**
+Right now we are supporting below OS:-
+- Windows
+- Linux
 
 ## Requirments
 The requirements for using this tools are:-
 
-- **Golang**
-- **Docker(If you are running Dockerized Setup)**
+##### Golang 
+- If you want to do development
+
+##### Docker
+- If you are running Dockerized Setup
+
+## Overview
+
+Dockerlinter will check the Dockerfile for best practices and generate report according to it.
+
+Things you should know about Dockerlinter:-
+- Dockerlinter only checks the best practices of Dockerfile, It doesn't format it.
+- For development golang 1.9+ versions are supported.
+
+The folder structure is something like this:-
+
+```s
+dockerlinter     ---> Main codebase for Dockerlinter
+├── cmd          ---> Contains main.go which is the entrypoint of the dockerlinter
+├── Dockerfile   ---> Dockerfile for dockerization of linting utility
+├── example      ---> Some example Dockerfiles for testing
+├── LICENSE      ---> Apache-2.0 License for this linter
+├── linter       ---> Contains rules for dockerlinter
+├── main.go      ---> The main.go file which will call other modules
+├── Makefile     ---> Makefile for ease of the development
+├── README.md    ---> README have all the information about this linter
+├── reports      ---> Report generation code for linter
+└── static       ---> Static files like images etc.
+```
 
 ## Parameters
 Here is the list of parameters which is accepted by this tool.
@@ -30,8 +55,9 @@ Here is the list of parameters which is accepted by this tool.
 |--ignore | code Ex:- dl3000 | Provide the rule code which you want to ignore |
 |--version | - | It will print the version of dockerlinter. |
 
-## How to Use
-This tool is pretty much straight forward for use. We have categorized it in two parts i.e. **Manual Setup** and **Dockerized Setup**
+## Getting Started
+
+#### Compiling binary
 
 ```shell
 git clone https://github.com/iamabhishek-dubey/dockerlinter.git
@@ -40,7 +66,19 @@ make get-depends
 make build-code
 ```
 
-### Dockerized Setup
+#### Using existing release
+
+```shell
+## For linux
+wget https://github.com/iamabhishek-dubey/dockerlinter/releases/download/v0.0.2/dockerlinter-0.0.2-linux-amd64.tar.gz
+tar -xvzf dockerlinter-0.0.2-linux-amd64.tar.gz
+
+## For Windows
+wget https://github.com/iamabhishek-dubey/dockerlinter/releases/download/v0.0.2/dockerlinter-0.0.2-windows-amd64.tar.gz
+tar -xvzf dockerlinter-0.0.2-windows-amd64.tar.gz
+```
+
+#### Dockerized Setup
 Steps for Dockerized Setup
 
 ```shell
